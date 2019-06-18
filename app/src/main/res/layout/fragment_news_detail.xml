@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="news" type="com.moter.newsapp.model.Article"/>
+    </data>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white">
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:id="@+id/collapsing_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:contentScrim="@android:color/white"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                    app:scrimAnimationDuration="300"
+                    app:scrimVisibleHeightTrigger="120dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_collapseMode="parallax">
+
+                    <ImageView android:layout_width="0dp"
+                               android:layout_height="200dp"
+                               app:imageUrl="@{news.urlToImage}"
+                               app:layout_constraintStart_toStartOf="parent"
+                               android:layout_marginStart="8dp"
+                               android:layout_marginEnd="8dp"
+                               app:layout_constraintBottom_toBottomOf="parent"
+                               android:layout_marginBottom="8dp"
+                               android:id="@+id/imageView"
+                               app:layout_constraintEnd_toEndOf="parent"
+                               app:layout_constraintTop_toTopOf="parent"
+                               android:layout_marginTop="8dp"/>
+
+                    <TextView
+                            tools:text="Analysis: Samsung asks users to please virus-scan their TVs - Ars Technica"
+                            android:id="@+id/tvNewsTitle"
+                            android:textAlignment="center"
+                            android:text="@{news.title}"
+                            android:textStyle="bold"
+                            android:layout_width="0dp" android:layout_height="wrap_content"
+                            app:layout_constraintEnd_toEndOf="@+id/imageView"
+                            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+                            app:layout_constraintTop_toBottomOf="@+id/imageView" android:layout_marginTop="8dp"/>
+
+                    <TextView android:id="@+id/tvNewsDesc"
+                              android:layout_width="0dp"
+                              android:textAlignment="center"
+                              android:layout_height="wrap_content"
+                              tools:text="Paul went to Rockets management and demanded a trade, and Harden issued a “him or me” edict following the Rockets’ second-round loss to the Golden State Warriors, sources said."
+                              app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+                              android:layout_marginStart="8dp" app:layout_constraintTop_toBottomOf="@+id/tvNewsTitle"
+                              android:layout_marginTop="8dp"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <TextView
+                android:id="@+id/tvNewsDetail"
+                android:text="@{news.content}"
+                android:layout_marginTop="20dp"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+        />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

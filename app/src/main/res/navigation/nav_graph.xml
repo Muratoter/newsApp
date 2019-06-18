@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
+            app:startDestination="@id/newsFragment">
+
+    <fragment android:id="@+id/newsFragment"
+              android:name="com.moter.newsapp.ui.fragment.NewsFragment"
+              android:label="fragment_news"
+              tools:layout="@layout/fragment_news">
+        <action android:id="@+id/action_newsFragment_to_newsDetailFragment" app:destination="@id/newsDetailFragment"/>
+    </fragment>
+    <fragment android:id="@+id/sourcesFragment"
+              android:name="com.moter.newsapp.ui.fragment.SourcesFragment"
+              android:label="fragment_sources"
+              tools:layout="@layout/fragment_sources">
+        <action android:id="@+id/action_sourcesFragment_to_sourceDetailFragment"
+                app:destination="@id/sourceDetailFragment"/>
+    </fragment>
+    <fragment android:id="@+id/sourceDetailFragment"
+              android:name="com.moter.newsapp.ui.fragment.SourceDetailFragment"
+              android:label="fragment_source_detail"
+              tools:layout="@layout/fragment_source_detail">
+        <argument android:name="source" app:argType="com.moter.newsapp.model.Source"/>
+        <action android:id="@+id/action_sourceDetailFragment_to_newsDetailFragment"
+                app:destination="@id/newsDetailFragment"/>
+    </fragment>
+    <fragment android:id="@+id/newsDetailFragment" android:name="com.moter.newsapp.ui.fragment.NewsDetailFragment"
+              android:label="fragment_news_detail" tools:layout="@layout/fragment_news_detail">
+        <argument android:name="article" app:argType="com.moter.newsapp.model.Article"/>
+    </fragment>
+</navigation>
